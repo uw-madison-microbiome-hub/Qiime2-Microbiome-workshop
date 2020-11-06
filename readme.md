@@ -150,7 +150,7 @@ wget -O "sample-metadata.tsv" "https://data.qiime2.org/2019.1/tutorials/atacama-
 You should run this workflow in a conda environment, which makes sure the correct version of the Python packages required by QIIME2 are being used. You can activate this conda environment with this command:
 
 ```
-source activate qiime2-2019.1
+source activate qiime2-2020.8
 ```
 
 ## 2 Paired-end read analysis commands
@@ -173,9 +173,9 @@ qiime demux summarize --i-data demux.qza --o-visualization demux.qzv
 It's assumed that the input is raw paired-end MiSeq data in demultiplexed FASTQ format located within a folder called raw_data. The filenames are expected to look like this: 105CHE6WT_S325_L001_R1_001.fastq.gz, where each field separated by an _ character corresponds to: (1) the sample name, (2) the sample# on the run, (3) the lane number, (4) the read number (R1 = forward, R2 = reverse), and (5) the set number. You may need to re-name your files to match this format; however, QIIME2 accepts many different input formats so the format and naming scheme you're using may also be supported.
 
 ```
-qiime tools import --type 'SampleData[PairedEndSequencesWithQuality]' --input-path demux/data --input-format CasavaOneEightSingleLanePerSampleDirFmt --output-path demux/demux-paired-end.qza    
+qiime tools import --type 'SampleData[PairedEndSequencesWithQuality]' --input-path raw_data --input-format CasavaOneEightSingleLanePerSampleDirFmt --output-path raw_data/demux-paired-end.qza    
 
-qiime demux summarize --i-data demux/demux-paired-end.qza --o-visualization demux/demux-paired-end.qzv
+qiime demux summarize --i-data raw_data/demux-paired-end.qza --o-visualization raw_data/demux-paired-end.qzv
 ```
 ### 2.2 transferring qzv files between server and your system
 
@@ -188,6 +188,15 @@ scp -r studentxx@sumo.biotech.wisc.edu:/home/BIOTECH/xxxxx/qiime2_tutorial/demux
 ```
 Those on Windows using MobaXterm (listed above) will have a built-in GUI for transfers.
 
+## Trim Primers
+Cutadaot is uded to remove reads that do not begin with the primers seqeunce and remove the primer sequence from the reads
+
+```
+qiime cutadapt trim-paired --i-demultiplexed-sequences raw_data/demux-paired-end.qza --p-cores 4 --p-front-f GTGYCAGCMGCCGCGGTAA --p-front-r GGACTACNVGGGTWTCTAAT --p-discard-untrimmed --p-no-indels
+ --o-trimmed-sequences raw_data/trimmed_paired-end.qza  
+ 
+qiime demux summarize --i-data raw_data/trimmed_paired-end.qza --o-visualization raw_data/trimmed_paired-end.qzv
+```
 
 ## 3 Running DADA2 workflow :
 
@@ -199,7 +208,7 @@ if you interested in getting to know more about the DADA2, [here](https://benjjn
 ```
 mkdir Analysis
 
-qiime dada2 denoise-paired --i-demultiplexed-seqs demux/demux-paired-end.qza --p-trim-left-f 13 --p-trim-left-r 13 --p-trunc-len-f 150 --p-trunc-len-r 150 --p-n-threads 2 --o-table Analysis/table.qza --o-representative-sequences Analysis/rep-seqs.qza --o-denoising-stats Analysis/denoising-stats.qza
+qiime dada2 denoise-paired --i-demultiplexed-seqs demux/trimmed_paired-end.qza --p-trim-left-f 13 --p-trim-left-r 13 --p-trunc-len-f 150 --p-trunc-len-r 150 --p-n-threads 2 --o-table Analysis/table.qza --o-representative-sequences Analysis/rep-seqs.qza --o-denoising-stats Analysis/denoising-stats.qza
 ```
 
 ```
@@ -341,7 +350,7 @@ You can assign taxonomy to your ASVs using a Naive-Bayes approach implemented in
 **Do not run:** Download a pre trained reference database
 
 ```
-wget https://data.qiime2.org/2019.4/common/silva-132-99-515-806-nb-classifier.qza
+wget https://data.qiime2.org/2020.8/common/silva-138-99-515-806-nb-classifier.qza
 ```
 ```
 qiime feature-classifier classify-sklearn --i-reads Analysis/filtered/rep_seqs_filt.qza --i-classifier /mnt/software/workshop/data/qiime2/qiime2_tutorial/silva-132-99-515-806-nb-classifier.qza --output-dir Analysis/taxa 
