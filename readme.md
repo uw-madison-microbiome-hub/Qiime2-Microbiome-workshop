@@ -447,6 +447,58 @@ biom convert -i Analysis/rel_table/rel-table_L$levels/feature-table.biom -o Anal
 ```
 
 ## Differential abundance testing
+### Aldex
+ALDEx2 is a differential abundance package that was initially developed for meta-RNA-Seq, but has performed very well with traditional RNA-Seq, 16S rRNA gene sequencing, and selective growth-type (SELEX) experiments.
+
+```
+# filter the samples
+qiime feature-table filter-samples \
+  --i-table table.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --p-where "[body-site]='gut'" \
+  --o-filtered-table gut-table.qza
+ ```
+ 
+ next step is to run aldex2 pipeline
+ ```
+ qiime aldex2 aldex2 \
+    --i-table gut-table.qza \
+    --m-metadata-file sample-metadata.tsv \
+    --m-metadata-column subject \
+    --output-dir gut-test
+ ```
+ 
+The output artifact is differentials.qza, which contains a summary of the ALDEx2 output (difference, dispersion, effect, q-score, etc).
+The visualizer aldex2 effect-plot takes as input the differentials.qzv artifact, and creates several plots.
+
+```
+qiime aldex2 effect-plot \
+    --i-table gut-test/differentials.qza \
+    --o-visualization gut-test/gut_test
+```
+
+We can extract the features and detailed information from the ALDEx2 summary output using extract-differences.
+
+```
+qiime aldex2 extract-differences \
+    --i-table gut-test/differentials.qza \
+    --o-differentials gut-test/sig_gut \
+    --p-sig-threshold 0.1 \
+    --p-effect-threshold 0 \
+    --p-difference-threshold 0
+```
+The tab separated file of differentially called features can be exported.
+
+```
+qiime tools export \
+    --input-path gut-test/sig_gut.qza \
+    --output-path differentially-expressed-features
+
+# view the file
+head differentially-expressed-features/differentials.tsv 
+```
+
+### ANCOM
 ANCOM can be applied to identify features that are differentially abundant (i.e. present in different abundances) across sample groups. As with any bioinformatics method, you should be aware of the assumptions and limitations of ANCOM before using it. 
 
 ```
