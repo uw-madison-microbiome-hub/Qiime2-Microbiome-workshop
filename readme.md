@@ -197,7 +197,7 @@ Those on Windows using MobaXterm (listed above) will have a built-in GUI for tra
 Cutadaot is uded to remove reads that do not begin with the primers seqeunce and remove the primer sequence from the reads
 
 ```
-qiime cutadapt trim-paired --i-demultiplexed-sequences raw_data/demux-paired-end.qza --p-cores 4 --p-front-f GTGYCAGCMGCCGCGGTAA --p-front-r GGACTACNVGGGTWTCTAAT --p-discard-untrimmed --p-no-indels --o-trimmed-sequences raw_data/trimmed_paired-end.qza  
+qiime cutadapt trim-paired --i-demultiplexed-sequences raw_data/demux-paired-end.qza --p-cores 4 --p-front-f GTGYCAGCMGCCGCGGTAA --p-front-r GGACTACNVGGGTWTCTAAT --p-discard-untrimmed --p-no-indels --o-trimmed-sequences raw_data/trimmed_paired-end.qza
  
 qiime demux summarize --i-data raw_data/trimmed_paired-end.qza --o-visualization raw_data/trimmed_paired-end.qzv
 ```
