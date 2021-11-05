@@ -135,6 +135,11 @@ wget -O "raw_data/reverse.fastq.gz" "https://data.qiime2.org/2019.1/tutorials/at
 ```
 wget -O "raw_data/barcodes.fastq.gz" "https://data.qiime2.org/2019.1/tutorials/atacama-soils/10p/barcodes.fastq.gz"        
 ```
+**Demultiplexed reads**
+```
+cp /mnt/software/workshop/data/qiime2/qiime2_tutorial/demux/data/*.fastq.gz raw_data/.
+```
+
 ## 1. First steps
 
 ### 1.1 Format metadata file
