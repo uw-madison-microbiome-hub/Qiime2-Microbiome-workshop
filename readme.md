@@ -150,7 +150,20 @@ You can format the metadata file in a spreadsheet and validate the format using 
 wget -O "sample-metadata.tsv" "https://data.qiime2.org/2019.1/tutorials/atacama-soils/sample_metadata.tsv"
 ```
   
-### 1.2 Activate conda environment
+### 1.2 Inspect read quality
+A combination of [FASTQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) and [MultiQC](https://multiqc.info/) is used to check if the reads are of reasonable quality and to  how your reads should be trimmed in downstream steps. The report "***multiqc_report.html***" is found in the fastqc output directory. you can view this report in the web browser. 
+
+```
+mkdir fastqc
+
+fastqc -t 4 raw_data/*.fastq.gz -o fastqc
+
+cd fastqc
+multiqc .
+cd ..
+```
+
+### 1.3 Activate conda environment
 
 You should run this workflow in a conda environment, which makes sure the correct version of the Python packages required by QIIME2 are being used. You can activate this conda environment with this command:
 
