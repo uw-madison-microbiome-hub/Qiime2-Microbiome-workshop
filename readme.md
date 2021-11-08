@@ -137,7 +137,8 @@ wget -O "raw_data/barcodes.fastq.gz" "https://data.qiime2.org/2019.1/tutorials/a
 ```
 **Demultiplexed reads**
 ```
-cp /mnt/software/workshop/data/qiime2/qiime2_tutorial/demux/data/*.fastq.gz raw_data/.
+mkdir raw_data/demux
+cp /mnt/software/workshop/data/qiime2/qiime2_tutorial/demux/data/*.fastq.gz raw_data/demux/.
 ```
 
 ## 1. First steps
