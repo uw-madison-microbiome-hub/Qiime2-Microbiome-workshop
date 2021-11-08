@@ -371,7 +371,7 @@ You can assign taxonomy to your ASVs using a Naive-Bayes approach implemented in
 wget https://data.qiime2.org/2020.8/common/silva-138-99-515-806-nb-classifier.qza
 ```
 ```
-qiime feature-classifier classify-sklearn --i-reads Analysis/filtered/rep_seqs_filt.qza --i-classifier /mnt/software/workshop/data/qiime2/qiime2_tutorial/silva-132-99-515-806-nb-classifier.qza --output-dir Analysis/taxa 
+qiime feature-classifier classify-sklearn --i-reads Analysis/filtered/rep_seqs_filt.qza --i-classifier /mnt/software/workshop/data/qiime2/qiime2_tutorial/silva-138-99-515-806-nb-classifier.qza --output-dir Analysis/taxa 
 ```
 
 As with all QZA files, you can export the output file to take a look at the classifications and confidence scores:
