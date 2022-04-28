@@ -8,7 +8,7 @@ There are more detailed descriptions and tutorials on the [QIIME2 website](https
 >**Note:** Make sure that your machine is powerful enough for the data set you wish to run. What we are doing today is a very, very small data set, which should not pose any issues on a resonably new standard laptop. However, if you were to run a full data set on a low-end personal computer, you would likely run out of memory and crash it. So make sure that whatever machine you use is up to the task before you start.
 
 
-The latest version of Qiime2 can be found [here](https://docs.qiime2.org/2019.1/install/#core-distribution).   
+The latest version of Qiime2 can be found [here](https://https://docs.qiime2.org/2022.2/install/).   
 
 If you have a Mac or Linux system -  You can install using Miniconda.   
 
@@ -23,10 +23,9 @@ We will remotely connect to the BRC Linux computer named `sumo` for these exerci
 ### Connect from a Mac
 Open a Terminal (if you are not sure where that is simply search for the word Terminal with “Spotlight” tool i.e. the top right magnifying glass icon)  
    
-Within the Terminal, type the following command adapted with your own studentxx account (shown here for student01): `ssh -Y student01@sumo.biotech.wisc.edu`  
+Within the Terminal, type the following command adapted with your own studentxx account (shown here for student01): `ssh student01@sumo.biotech.wisc.edu`  
      
-The -Y option allows passing of any graphics from the BRC Linux computer. The XQartz program should be installed for this to work (See https://www.xquartz.org)    
-sumo is the name of the computer.     
+sumo is the name of the computer  
 
 ### Connect from a Windows PC
   
