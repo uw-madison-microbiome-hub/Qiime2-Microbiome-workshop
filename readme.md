@@ -8,7 +8,7 @@ There are more detailed descriptions and tutorials on the [QIIME2 website](https
 >**Note:** Make sure that your machine is powerful enough for the data set you wish to run. What we are doing today is a very, very small data set, which should not pose any issues on a resonably new standard laptop. However, if you were to run a full data set on a low-end personal computer, you would likely run out of memory and crash it. So make sure that whatever machine you use is up to the task before you start.
 
 
-The latest version of Qiime2 can be found [here](https://https://docs.qiime2.org/2022.2/install/).   
+The latest version of Qiime2 can be found [here](https://docs.qiime2.org/2023.2/install/#qiime-2-core-2023-2-distribution).   
 
 If you have a Mac or Linux system -  You can install using Miniconda.   
 
