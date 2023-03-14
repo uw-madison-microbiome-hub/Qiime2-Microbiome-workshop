@@ -1,4 +1,4 @@
-This workshop will cover amplicon-based microbiome analysis using the [QIIME2](https://qiime2.org). This all-day workshop will consist of lectures and hands on training to analyze from raw dataset through publication-quality statistics and visualizations.
+This workshop will cover amplicon-based microbiome analysis using [QIIME2](https://qiime2.org). This all-day workshop will consist of hands on training to analyze from raw dataset through publication-quality statistics and visualizations.
 There are more detailed descriptions and tutorials on the [QIIME2 website](https://docs.qiime2.org/2019.1/tutorials/).
 
 ## Get Started
