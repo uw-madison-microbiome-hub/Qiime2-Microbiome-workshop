@@ -13,8 +13,8 @@ The latest version of Qiime2 can be found [here](https://docs.qiime2.org/2023.2/
 If you have a Mac or Linux system -  You can install using Miniconda.   
 
 Other options for every OS including windows OS is   
-[Virtual Box](https://docs.qiime2.org/2019.1/install/virtual/virtualbox/),  
-[Docker](https://docs.qiime2.org/2019.1/install/virtual/docker/) and  
+[WSL](https://docs.qiime2.org/2023.2/install/virtual/wsl/),  
+[Docker](https://docs.qiime2.org/2023.2/install/virtual/docker/) and  
 [Amazon Web Services](https://docs.qiime2.org/2019.1/install/virtual/aws/) 
 
 ## Connect to the BRC Linux Computer
